@@ -1,3 +1,7 @@
-struct RPGGameKit {
-    var text = "Hello, World!"
+public struct RPGGameKit {
+    public var text = "Hello, World!"
+    
+    public init() {
+        
+    }
 }
