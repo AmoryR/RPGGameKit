@@ -11,7 +11,7 @@ enum FeedbackPosition {
     case top, right, bottom, left
 }
 
-class RPGEntity: SKSpriteNode {
+public class RPGEntity: SKSpriteNode {
     
     /// Movement properties
     var movementSpeed: CGFloat = 40.0
@@ -19,7 +19,7 @@ class RPGEntity: SKSpriteNode {
     var movementDirection: CGVector = .zero
     
     /// Animation property
-    private var animations: [String: RPGAnimation] = [:]
+//    private var animations: [String: RPGAnimation] = [:]
     
     /// Contact area properties
     private var contactAreaRadius: CGFloat = 2.0
@@ -38,13 +38,13 @@ class RPGEntity: SKSpriteNode {
     
     // MARK: - Constructors
     
-    init(color: UIColor, size: CGSize) {
+    public init(color: UIColor, size: CGSize) {
         super.init(texture: nil, color: color, size: size)
         
         self.name = "Entity"
     }
     
-    init(textureName: String) {
+    public init(textureName: String) {
         super.init(texture: nil, color: .clear, size: .zero)
         
         self.texture = SKTexture(imageNamed: textureName)
@@ -192,12 +192,12 @@ class RPGEntity: SKSpriteNode {
     
     /// Add this entity to a RPGGameScene
     /// - Parameter scene: Scene you want to add this entity on
-    func add(to scene: RPGGameScene) {
+    public func add(to scene: RPGGameScene) {
         scene.addChild(self)
     }
     
     /// Remove this entity from it's RPGGameScene
-    func remove() {
+    public func remove() {
         self.removeFromParent()
     }
     
@@ -205,9 +205,9 @@ class RPGEntity: SKSpriteNode {
     
     /// Attache a camera
     /// - Parameter camera: Camera you want to attach the player on
-    func attach(camera: RPGCamera) {
-        camera.move(toParent: self)
-    }
+//    func attach(camera: RPGCamera) {
+//        camera.move(toParent: self)
+//    }
     
     // MARK: - Physics methods
     
@@ -299,7 +299,7 @@ class RPGEntity: SKSpriteNode {
     /// Move this entity in a direction
     /// - Parameter direction: Direction you want to move this entity in
     func move(in direction: CGVector) {
-        self.movementDirection = direction.normalized()
+//        self.movementDirection = direction.normalized()
     }
     
     /// Stop moving
@@ -311,37 +311,37 @@ class RPGEntity: SKSpriteNode {
     
     /// Register a RPGAnimation for this entity
     /// - Parameter animation: Animation to register
-    func register(animation: RPGAnimation) {
-        animation.set(entity: self)
-        animations[animation.key] = animation
-    }
+//    func register(animation: RPGAnimation) {
+//        animation.set(entity: self)
+//        animations[animation.key] = animation
+//    }
     
     /// Play animation
     /// - Parameter key: Key of the animation you want to play
     func playAnimation(forKey key: String) {
         
-        if !self.isAnimationRunning(withKey: key) {
-            if let animation = animations[key] {
-                animation.run()
-            } else {
-                if key.count != 0 {
-                    print("No animation registered for key : \(key)")
-                }
-            }
-        }
+//        if !self.isAnimationRunning(withKey: key) {
+//            if let animation = animations[key] {
+//                animation.run()
+//            } else {
+//                if key.count != 0 {
+//                    print("No animation registered for key : \(key)")
+//                }
+//            }
+//        }
         
     }
     
     /// Stop animation
     /// - Parameter key: Key of the animation you want to stop
     func stopAnimation(forKey key: String) {
-        if let animation = animations[key] {
-            animation.stop()
-        } else {
-            if key.count != 0 {
-                print("No animation registered for key : \(key)")
-            }
-        }
+//        if let animation = animations[key] {
+//            animation.stop()
+//        } else {
+//            if key.count != 0 {
+//                print("No animation registered for key : \(key)")
+//            }
+//        }
     }
     
     /// Stop all animations
@@ -354,19 +354,19 @@ class RPGEntity: SKSpriteNode {
     /// - Returns: True if the animation is running
     func isAnimationRunning(withKey key: String) -> Bool {
         
-        if let animation = animations[key] {
-            if let _ = self.action(forKey: animation.key) {
-                return true
-            } else {
-                return false
-            }
-            
-        } else {
-            if key.count != 0 {
-                print("No animation registered for key : \(key)")
-            }
+//        if let animation = animations[key] {
+//            if let _ = self.action(forKey: animation.key) {
+//                return true
+//            } else {
+//                return false
+//            }
+//
+//        } else {
+//            if key.count != 0 {
+//                print("No animation registered for key : \(key)")
+//            }
             return false
-        }
+//        }
         
     }
     
@@ -413,9 +413,9 @@ class RPGEntity: SKSpriteNode {
     
     /// Update entity's velocity
     func updateVelocity() {
-        if let physicsBody = self.physicsBody {
-            physicsBody.velocity = self.movementDirection * self.movementSpeed
-        }
+//        if let physicsBody = self.physicsBody {
+//            physicsBody.velocity = self.movementDirection * self.movementSpeed
+//        }
     }
     
     /// Update entity 
