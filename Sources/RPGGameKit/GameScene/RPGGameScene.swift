@@ -19,15 +19,15 @@ open class RPGGameScene: SKScene, SKPhysicsContactDelegate {
     // MARK: - Touches methods
     
     public override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        RPGGestureDetectorService.shared.touchesBegan(touches, with: event, on: self)
+        RPGGestureDetectorService.shared.touchesBegan(touches, with: event, on: self)
     }
     
     public override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        RPGGestureDetectorService.shared.touchesMoved(touches, with: event, on: self)
+        RPGGestureDetectorService.shared.touchesMoved(touches, with: event, on: self)
     }
     
     public override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        RPGGestureDetectorService.shared.touchesEnded(touches, with: event, on: self)
+        RPGGestureDetectorService.shared.touchesEnded(touches, with: event, on: self)
     }
     
     // MARK: - Collision methods

@@ -213,7 +213,7 @@ public class RPGEntity: SKSpriteNode {
     
     /// Build physics
     /// By default you can't rotate your entity nor affect gravity
-    func buildPhysics() {
+    public func buildPhysics() {
         self.physicsBody = SKPhysicsBody(rectangleOf: self.size)
         self.physicsBody?.affectedByGravity = false
         self.physicsBody?.allowsRotation = false
@@ -298,12 +298,12 @@ public class RPGEntity: SKSpriteNode {
     
     /// Move this entity in a direction
     /// - Parameter direction: Direction you want to move this entity in
-    func move(in direction: CGVector) {
-//        self.movementDirection = direction.normalized()
+    public func move(in direction: CGVector) {
+        self.movementDirection = direction.normalized()
     }
     
     /// Stop moving
-    func stopMoving() {
+    public func stopMoving() {
         self.movementDirection = .zero
     }
     
@@ -412,14 +412,14 @@ public class RPGEntity: SKSpriteNode {
     // MARK: - Update methods
     
     /// Update entity's velocity
-    func updateVelocity() {
-//        if let physicsBody = self.physicsBody {
-//            physicsBody.velocity = self.movementDirection * self.movementSpeed
-//        }
+    public func updateVelocity() {
+        if let physicsBody = self.physicsBody {
+            physicsBody.velocity = self.movementDirection * self.movementSpeed
+        }
     }
     
     /// Update entity 
-    func update() {
+    public func update() {
         self.updateVelocity()
     }
     
