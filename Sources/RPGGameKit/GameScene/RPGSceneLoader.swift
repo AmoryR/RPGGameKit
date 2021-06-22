@@ -9,15 +9,15 @@ import UIKit
 import SpriteKit
 import GameplayKit
 
-class RPGSceneLoader {
+public class RPGSceneLoader {
     
     private var mainViewController: UIViewController?
     
-    static var shared = RPGSceneLoader()
+    public static var shared = RPGSceneLoader()
     
     private init() {}
     
-    func set(mainViewController: UIViewController) {
+    public func set(mainViewController: UIViewController) {
         self.mainViewController = mainViewController
         
         if let view = self.mainViewController?.view as? SKView {
@@ -29,18 +29,14 @@ class RPGSceneLoader {
         }
     }
     
-    func presentScene(named name: String) {
+    public func presentScene(named name: String) {
         
         if let mainView = self.mainViewController, let view = mainView.view as? SKView {
             
-            // Load scene as a GKScene. This provides gameplay related content
-            // including entities and graphs.
             if let scene = GKScene(fileNamed: name) {
                 
                 // Get the SKScene from the loaded GKScene
                 if let sceneNode = scene.rootNode as! RPGGameScene? {
-                    
-//                    RPGDatabaseManager.shared.load(scene: sceneNode)
                     
                     sceneNode.scaleMode = .aspectFill
                     view.presentScene(sceneNode)

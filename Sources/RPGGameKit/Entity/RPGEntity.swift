@@ -251,7 +251,7 @@ public class RPGEntity: SKSpriteNode {
     
     /// Set category mask for physics body properties
     /// - Parameter categoryMask: Category mask of this entity
-    func setCategoryMask(categoryMask: UInt32) {
+    public func setCategoryMask(categoryMask: UInt32) {
         
         if let physicsBody = self.physicsBody {
             physicsBody.categoryBitMask = categoryMask
@@ -264,7 +264,7 @@ public class RPGEntity: SKSpriteNode {
     
     /// Add collision with an other entity
     /// - Parameter collisionMask: Category mask of the entity you want to collide with
-    func addCollisionMask(collisionMask: UInt32) {
+    public func addCollisionMask(collisionMask: UInt32) {
         
         if let physicsBody = self.physicsBody {
             if !self.collisionMasksList.contains(collisionMask) {
@@ -280,7 +280,7 @@ public class RPGEntity: SKSpriteNode {
     
     /// Add contact test with an other entity
     /// - Parameter contactMask: Category mask of the entity you want to test collision and get callback on your collision handler
-    func addContactTest(contactMask: UInt32) {
+    public func addContactTest(contactMask: UInt32) {
         
         if let physicsBody = self.physicsBody {
             if !self.contactTestsList.contains(contactMask) {
