@@ -54,7 +54,7 @@ public class RPGEntity: SKSpriteNode {
         self.name = "Entity"
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
         self.texture?.filteringMode = .nearest
@@ -64,7 +64,7 @@ public class RPGEntity: SKSpriteNode {
     
     /// Update contact area radius
     /// - Parameter radius: New radius value
-    func updateContactAreaRadius(for radius: CGFloat) {
+    public func updateContactAreaRadius(for radius: CGFloat) {
         self.contactAreaRadius = radius
         
         if let contactArea = self.contactArea {
@@ -82,14 +82,13 @@ public class RPGEntity: SKSpriteNode {
     
     /// Add contact area around entity to help contact
     /// - Parameter categoryMask: Category mask of the contact area
-    func addContactArea(categoryMask: UInt32) {
+    public func addContactArea(categoryMask: UInt32) {
         
         self.contactArea = SKSpriteNode()
         
         if let contactArea = self.contactArea {
             
-            // I need to fix this contact area but for now
-            // Contact area only applies to non-moving entity
+            // TODO: Fix contact area on non-moving entity
             self.physicsBody?.isDynamic = false
             
             contactArea.name = "ContactArea"
@@ -112,10 +111,11 @@ public class RPGEntity: SKSpriteNode {
     
     /// Remove contact area
     /// Contact will no longer be available
-    func removeContactArea() {
+    public func removeContactArea() {
         
         if let contactArea = self.contactArea {
             contactArea.removeFromParent()
+            self.physicsBody?.isDynamic = true
         }
         
     }
@@ -124,7 +124,7 @@ public class RPGEntity: SKSpriteNode {
     /// Usually called when two entities are in contact
     ///
     /// Maybe be a problem if multiple entities are in contact with each other
-    func mainAction() {
+    public func mainAction() {
         
         if let contactEntity = self.contactEntity {
             contactEntity.mainAction()

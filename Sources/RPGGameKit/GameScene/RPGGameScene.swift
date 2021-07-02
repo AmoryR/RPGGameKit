@@ -10,7 +10,7 @@ import SpriteKit
 open class RPGGameScene: SKScene, SKPhysicsContactDelegate {
     
     private var backgroundAudio: SKAudioNode?
-//    private var collisionHandlers: [String: RPGCollisionHandler] = [:]
+    private var collisionHandlers: [String: RPGCollisionHandler] = [:]
     
     public override func sceneDidLoad() {
         physicsWorld.contactDelegate = self
@@ -36,46 +36,46 @@ open class RPGGameScene: SKScene, SKPhysicsContactDelegate {
     /// - Parameters:
     ///   - collisionHandler: Collision handler you want to register
     ///   - key: Key of this collision handler
-//    func register(collisionHandler: RPGCollisionHandler, withKey key: String) {
-//        self.collisionHandlers[key] = collisionHandler
-//    }
+    public func register(collisionHandler: RPGCollisionHandler, withKey key: String) {
+        self.collisionHandlers[key] = collisionHandler
+    }
     
     /// Remove collision handler for this scene
     /// - Parameter key: Key of the collision handler you want to remove
-    func removeCollisionHandler(withKey key: String) {
+    public func removeCollisionHandler(withKey key: String) {
         
-//        if let _ = self.collisionHandlers[key] {
-//            self.collisionHandlers.removeValue(forKey: key)
-//        } else {
-//            print("no collision handler with key '\(key)' to remove")
-//        }
-//
+        if let _ = self.collisionHandlers[key] {
+            self.collisionHandlers.removeValue(forKey: key)
+        } else {
+            print("no collision handler with key '\(key)' to remove")
+        }
+
     }
     
     /// Add collision to a tilemap of the game scene
     /// - Parameters:
     ///   - name: Name of the tilemap
     ///   - categoryMask: Category mask of the tilemap so an entity can interact with
-    func addCollisionToTilemap(named name: String, withCategoryMask categoryMask: UInt32) {
+    public func addCollisionToTilemap(named name: String, withCategoryMask categoryMask: UInt32) {
         
-//        if let tilemap = self.childNode(withName: name) as? SKTileMapNode {
-//            tilemap.createSweetLinePhysicsBody(categoryMask: categoryMask)
-//        }
+        if let tilemap = self.childNode(withName: name) as? SKTileMapNode {
+            tilemap.createSweetLinePhysicsBody(categoryMask: categoryMask)
+        }
         
     }
     
     /// Collision did begin between nodes
     public func didBegin(_ contact: SKPhysicsContact) {
-//        for collisionHandler in self.collisionHandlers {
-//            collisionHandler.value.didBegin(contact)
-//        }
+        for collisionHandler in self.collisionHandlers {
+            collisionHandler.value.didBegin(contact)
+        }
     }
     
     /// Collision did end between nodes
     public func didEnd(_ contact: SKPhysicsContact) {
-//        for collisionHandler in self.collisionHandlers {
-//            collisionHandler.value.didEnd(contact)
-//        }
+        for collisionHandler in self.collisionHandlers {
+            collisionHandler.value.didEnd(contact)
+        }
     }
     
     // MARK: - Life cycle methods
