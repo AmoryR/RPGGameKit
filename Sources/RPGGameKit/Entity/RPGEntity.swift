@@ -7,7 +7,7 @@
 
 import SpriteKit
 
-enum FeedbackPosition {
+public enum FeedbackPosition {
     case top, right, bottom, left
 }
 
@@ -140,17 +140,15 @@ public class RPGEntity: SKSpriteNode {
     
     private var feedbackTexture: SKTexture?
     private var feedback: SKSpriteNode?
-    var feedbackPosition: FeedbackPosition = .top
+    public var feedbackPosition: FeedbackPosition = .top
     
-    func createFeedback(textureName: String) {
-        
+    public func createFeedback(textureName: String) {
         self.feedbackTexture = SKTexture(imageNamed: textureName)
         self.feedbackTexture!.filteringMode = .nearest
         self.feedback = SKSpriteNode(texture: self.feedbackTexture, size: CGSize(width: 8, height: 8))
-        
     }
     
-    func showFeedback() {
+    public func showFeedback() {
         
         if let feedback = self.feedback {
             
@@ -180,7 +178,7 @@ public class RPGEntity: SKSpriteNode {
         
     }
     
-    func hideFeedback() {
+    public func hideFeedback() {
         
         if let feedback = self.feedback {
             feedback.removeFromParent()
