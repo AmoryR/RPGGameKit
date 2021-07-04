@@ -29,6 +29,7 @@ More detail will be added...
 - [X]  Movement
 - [ ]  Animations
 - [X]  Camera
+- [ ]  Inventory
 
 ### NPC
 
@@ -39,7 +40,8 @@ More detail will be added...
 - [ ]  Collisions
 - [ ]  Navigation between scenes
 - [ ]  Animations between scenes
-- [ ] Level design
+- [ ]  Level design
+- [ ]  Collectable items
 
 ### UI
 
