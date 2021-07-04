@@ -205,6 +205,7 @@ public class RPGEntity: SKSpriteNode {
     /// - Parameter camera: Camera you want to attach the player on
     public func attach(camera: RPGCamera) {
         camera.move(toParent: self)
+        camera.position = .zero
     }
     
     // MARK: - Physics methods
