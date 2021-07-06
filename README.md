@@ -33,14 +33,14 @@ More detail will be added...
 
 ### NPC
 
-- [ ]  Interaction
+- [X]  Interaction
 
 ### Scenes
 
 - [ ]  Collisions
 - [ ]  Navigation between scenes
 - [ ]  Animations between scenes
-- [ ]  Level design
+- [X]  Level design
 - [ ]  Collectable items
 
 ### UI
@@ -53,7 +53,7 @@ More detail will be added...
 ### Others
 
 - [ ]  Interaction feedback
-- [ ]  Gesture detection
+- [X]  Gesture detection
 - [ ]  Audio
 - [ ]  Save/Load
 - [ ]  Support 16x16 and 32x32
