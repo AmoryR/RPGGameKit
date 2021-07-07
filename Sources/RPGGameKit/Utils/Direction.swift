@@ -7,7 +7,7 @@
 
 import CoreGraphics
 
-enum Direction {
+public enum Direction {
     case top
     case right
     case bottom
@@ -15,12 +15,12 @@ enum Direction {
     case none
 }
 
-class DirectionService {
+public class DirectionService {
     
     /// Get direction from an angle
     /// - Parameter angle: Angle value between -PI and PI
     /// - Returns: The direction closest to the angle
-    static func getDirection(forAngle angle: CGFloat) -> Direction {
+    public static func getDirection(forAngle angle: CGFloat) -> Direction {
         
         let pi_25 = CGFloat.pi * 0.25
         let pi_75 = CGFloat.pi * 0.75
@@ -40,7 +40,7 @@ class DirectionService {
     /// Get dierction from vector
     /// - Parameter vector: Vector value as CGVector
     /// - Returns: The direction of the vector using the angle
-    static func getDirection(forVector vector: CGVector) -> Direction {
+    public static func getDirection(forVector vector: CGVector) -> Direction {
         return DirectionService.getDirection(forAngle: vector.angle)
     }
     
@@ -48,7 +48,7 @@ class DirectionService {
     /// Get vector from a direction
     /// - Parameter direction: Direction you want to get the vector of
     /// - Returns: Vector corresponding to a direction
-    static func getVector(fromDirection direction: Direction) -> CGVector {
+    public static func getVector(fromDirection direction: Direction) -> CGVector {
         
         switch direction {
         case .top:

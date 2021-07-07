@@ -7,6 +7,19 @@
 
 import SpriteKit
 
+/*
+ 
+ IDEA : IT'S an RPG so I can handle movement animation here
+ 
+ Like a RPGEntityBehavior
+ 
+    Have a list of behavior with init and update method (init called in init and update in update)
+ 
+    // So handle specific behavior
+    // For example AnimationBehavior with init that take for animation (For direction) and play the right one
+ 
+ */
+
 public enum FeedbackPosition {
     case top, right, bottom, left
 }
@@ -20,6 +33,7 @@ public class RPGEntity: SKSpriteNode {
     
     /// Animation property
 //    private var animations: [String: RPGAnimation] = [:]
+    private var behaviors: [String: RPGEntityBehavior] = [:]
     
     /// Contact area properties
     private var contactAreaRadius: CGFloat = 2.0
@@ -408,7 +422,21 @@ public class RPGEntity: SKSpriteNode {
     
     }
     
+    // MARK: - Behavior methods
+    
+    public func register(behavior: RPGEntityBehavior) {
+        behavior.set(entity: self)
+        behaviors[behavior.key] = behavior
+    }
+    
+    
     // MARK: - Update methods
+    
+    public func updateBehaviors() {
+        for behavior in self.behaviors {
+            behavior.value.update()
+        }
+    }
     
     /// Update entity's velocity
     public func updateVelocity() {
@@ -420,6 +448,7 @@ public class RPGEntity: SKSpriteNode {
     /// Update entity 
     public func update() {
         self.updateVelocity()
+        self.updateBehaviors()
     }
     
 }
