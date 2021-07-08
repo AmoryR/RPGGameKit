@@ -23,16 +23,30 @@ public class RPGMovementTexturesBehavior: RPGEntityBehavior {
             fatalError("Textures must contain 4 textures in MovementTexturesBehavior")
         }
         self.frontTexture = textures[0]
+        self.frontTexture.filteringMode = .nearest
+        
         self.leftTexture = textures[1]
+        self.leftTexture.filteringMode = .nearest
+        
         self.backTexture = textures[2]
+        self.backTexture.filteringMode = .nearest
+        
         self.rightTexture = textures[3]
+        self.rightTexture.filteringMode = .nearest
     }
     
     public override func update() {
         
         if let entity = self.entity {
-            let direction = DirectionService.getDirection(forVector: entity.movementDirection)
             
+            if (entity.movementDirection.length() < 0.2) {
+                self.currentDirection = .none
+                self.changeTexture(for: self.currentDirection)
+                return
+            }
+            
+            let direction = DirectionService.getDirection(forVector: entity.movementDirection)
+
             if direction != self.currentDirection {
                 self.currentDirection = direction
                 self.changeTexture(for: self.currentDirection)

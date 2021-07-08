@@ -35,6 +35,9 @@ public class DirectionService {
             return .left
         }
         
+        // Should return .none at some point
+        // But angle is 0 when I dont touch the screen
+        
     }
     
     /// Get dierction from vector
